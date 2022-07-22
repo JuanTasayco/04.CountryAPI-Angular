@@ -1,0 +1,13 @@
+<h4 class="fs-6 lead text-uppercase pt-1">Por lenguaje</h4>
+<app-search-component (onEmitValue)="endpointLenguage($event)"></app-search-component>
+
+<div *ngIf="countryFound, else lenguageNotWasFound">
+    <app-table-component [arrayCountries]="countryArray"></app-table-component>
+    </div>
+    
+    <ng-template #lenguageNotWasFound>
+    
+        <div class="alert alert-danger p-5 mt-4 text-center" role="alert">
+            <span class="text-center">  Lenguage, not was found.</span>
+          </div>
+    </ng-template>

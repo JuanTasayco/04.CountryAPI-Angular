@@ -1,0 +1,35 @@
+
+<div class="overflow-auto ">
+
+
+
+<table 
+class="table table-hover text-center ">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Bandera</th>
+        <th>Capital</th>
+        <th>País</th>
+        <th>Región</th>
+        <th>Lenguaje</th>
+        <th>Moneda</th>
+      </tr>
+    </thead>
+
+    <tbody class="">
+      <tr *ngFor="let country of countryArray, let i=index">
+        <td class="fw-normal">{{i+1}}</td>
+        <td class="fw-normal "><img [src]="country.flags.png" alt="" width="30" height="20" class="mx-auto"></td>
+        <td class="fw-normal">{{country.capital}}</td>
+        <td class="fw-normal" > <a [routerLink]="['../pais/',country.fifa]" class="text-decoration-none" > {{country.name.common}}</a></td>
+        <td class="fw-normal">{{country.region}}</td>
+        <td class="fw-normal"><p *ngFor="let lang of country.languages | keyvalue">{{lang.value}}</p></td>
+        <td class="fw-normal"><p *ngFor="let curr of country.currencies | keyvalue">{{curr.key}}</p></td>
+      </tr>   
+    </tbody>
+
+    
+  </table> 
+  
+</div>

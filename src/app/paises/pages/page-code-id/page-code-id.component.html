@@ -1,0 +1,111 @@
+<div class="row pt-5 pt-md-0" *ngIf="country, else noCountryFound" data-masonry='{"percentPosition": true }'>
+ 
+    <div class="col-sm-6 col-lg-4 mb-4">
+        <div class="card">
+            <img [src]="country.coatOfArms.png" alt="">
+            <div class="card-body">
+                <h5 class="card-title">{{country.name.official}}</h5>
+                <p class="card-text">{{country.name.common}} también conocida como {{country.name.official}} tiene como países limítrofes a 
+                    <a class="text-primary text-decoration-none" *ngFor="let count of country.borders" [routerLink]="['../',count]"> {{count}}</a> ,
+
+                </p>
+            </div>
+        </div>
+    </div>
+
+  
+    <div class="col-sm-6 col-lg-4 mb-4">
+        <div class="card p-3">
+            <figure class="p-3 mb-0">
+                <blockquote class="blockquote">
+                    <p> {{country.continents}} </p>
+                </blockquote>
+                <figcaption class="blockquote-footer mb-0 text-muted">
+                    {{country.name.common }} pertenece a {{country.continents}} quien a la  vez pertenece a {{country.region}}.
+                </figcaption>
+            </figure>
+        </div>
+    </div>
+    <div class="col-sm-6 col-lg-4 mb-4">
+        <div class="card">
+            <img [src]="country.flags.png" alt="" class="img-fluid"> 
+            <div class="card-body">
+                <h5 class="card-title">Población</h5>
+                <p class="card-text">{{country.name.common }} tiene una población de {{country.population | number}} habitantes</p>
+                <p class="card-text"><small class="text-muted">Zona horaria : {{country.timezones}}</small></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-lg-4 mb-4">
+        <div class="card bg-primary text-white text-center p-3">
+            <figure class="mb-0">
+                <blockquote class="blockquote">
+                    <p>La capital de {{country.name.common }} es {{country.capital}}</p>
+                </blockquote>
+                <figcaption class="blockquote-footer mb-0 text-white">
+                    Con una latitud de {{country.capitalInfo.latlng}}
+                </figcaption>
+            </figure>
+        </div>
+    </div>
+    <div class="col-sm-6 col-lg-4 mb-4">
+        <div class="card text-center">
+            <div class="card-body">
+                <h5 class="card-title">Lenguajes</h5>
+                <p class="card-text">Los lenguajes más comunes en {{country.name.common}} son: 
+                    <small *ngFor="let con of country.languages | keyvalue" class="text-muted fs-6"> 
+                        -{{con.value }}
+                    </small>
+             
+                </p>
+                <p class="card-text"><small class="text-muted">Estas son sus lenguas oficiales</small></p>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-lg-4 mb-4">
+        <div class="card">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">GINI</h5>
+                    <p class="card-text">GINI, también conocido como el coeficiente de Gini, representa la desigualdad salarial en {{country.name.common }}, aquí es del 
+                        <small  class="fs-5 text-info" *ngFor="let gin of country.gini | keyvalue">{{gin.value}}%</small></p>
+                    <p class="card-text"><small class="text-muted">Mientras más bajo, mejor es la igualdad salarial.</small></p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-sm-6 col-lg-4 mb-4">
+        <div class="card p-3 text-end">
+            <figure class="mb-0">
+                <blockquote class="blockquote">
+                    <p>La moneda principal de {{country.name.common }} es el
+                     <small *ngFor="let curren of country.currencies | keyvalue">
+                        {{curren.key }}
+                     </small>  
+                     
+                    </p>
+                </blockquote>
+                <figcaption class="blockquote-footer mb-0 text-muted">
+                    Moneda oficial
+                </figcaption>
+            </figure>
+        </div>
+    </div>
+    <div class="col-sm-6 col-lg-4 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">FIFA</h5>
+                <p class="card-text">En el fútbol la denominación oficial para {{country.name.common }} es {{country.fifa}}</p>
+                <p class="card-text"><small class="text-muted">Oficial por FIFA</small></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #noCountryFound>
+    <div class="alert alert-danger p-5 mt-4 text-center" role="alert">
+        <span class="text-center">  Country, not was found.</span>
+      </div>
+
+</ng-template>

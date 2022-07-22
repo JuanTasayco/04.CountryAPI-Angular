@@ -1,0 +1,13 @@
+<h4 class="fs-6 lead text-uppercase pt-1">Por capital</h4>
+
+<app-search-component (onEmitValue)="endpointCapital($event)"></app-search-component>
+<div *ngIf="countryFound, else capitalNotWasFound">
+    <app-table-component [arrayCountries]="countryArray"></app-table-component>
+</div>
+
+<ng-template #capitalNotWasFound>
+
+    <div class="alert alert-danger p-5 mt-4 text-center" role="alert">
+        <span class="text-center"> Capital, not was found.</span>
+    </div>
+</ng-template>
