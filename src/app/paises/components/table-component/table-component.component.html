@@ -1,35 +1,39 @@
 
 <div class="overflow-auto ">
 
-
-
-<table 
-class="table table-hover text-center ">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Bandera</th>
-        <th>Capital</th>
-        <th>País</th>
-        <th>Región</th>
-        <th>Lenguaje</th>
-        <th>Moneda</th>
-      </tr>
-    </thead>
-
-    <tbody class="">
-      <tr *ngFor="let country of countryArray, let i=index">
-        <td class="fw-normal">{{i+1}}</td>
-        <td class="fw-normal "><img [src]="country.flags.png" alt="" width="30" height="20" class="mx-auto"></td>
-        <td class="fw-normal">{{country.capital}}</td>
-        <td class="fw-normal" > <a [routerLink]="['../pais/',country.fifa]" class="text-decoration-none" > {{country.name.common}}</a></td>
-        <td class="fw-normal">{{country.region}}</td>
-        <td class="fw-normal"><p *ngFor="let lang of country.languages | keyvalue">{{lang.value}}</p></td>
-        <td class="fw-normal"><p *ngFor="let curr of country.currencies | keyvalue">{{curr.key}}</p></td>
-      </tr>   
-    </tbody>
-
-    
-  </table> 
+  <div class="card" class="mt-2">
+    <p-table [value]="countryArray" [paginator]="true" [rows]="10" [showCurrentPageReport]="true" responsiveLayout="scroll"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10,25,50]">
+        <ng-template pTemplate="header">
+            <tr>
+              
+                <th class="fw-normal fs-6">Bandera</th>
+                <th class="fw-normal fs-6">Capital</th>
+                <th class="fw-normal fs-6">País</th>
+                <th class="fw-normal fs-6">Región</th>
+                <th class="fw-normal fs-6">Lenguaje</th>
+                <th class="fw-normal fs-6">Moneda</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-pais>
+            <tr>
+               <td><img [src]="pais.flags.png" heigth="50" width="50" class=" m-auto " ></td> 
+                <td>{{pais.capital}}</td>
+                <td><a [routerLink]="['../pais/', pais.fifa]" class="text-decoration-none">{{pais.name.common}}</a></td>
+                <td> {{pais.region}}</td> 
+                <td>{{pais.languages |objectPipe}}</td>
+                <td>{{pais.currencies |objectPipe:true}}</td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="paginatorleft">
+            <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
+        </ng-template>
+        <ng-template pTemplate="paginatorright">
+            <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
+        </ng-template>
+    </p-table>
+</div>
   
 </div>
+
+

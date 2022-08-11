@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { count } from 'rxjs';
+import { Component} from '@angular/core';
 import { CountryResponse } from '../../interfaces/paises.interface';
 import { PaisesService } from '../../services/paises.service';
 
@@ -11,22 +10,30 @@ import { PaisesService } from '../../services/paises.service';
 
 export class PageCurrencyComponent {
 
-  countryArray : CountryResponse []= [];
+  countryArray: CountryResponse[] = [];
   countryFound = true;
 
 
-  endpointCurrency(value: string ){
-    
+  endpointCurrency(value: string) {
+
     this.paisService.getCurrency(value)
-    .subscribe((countries)=>{
-      this.countryArray = countries;
-      this.countryFound = true;
-    }, ()=>{
-        this.countryFound= false;
-    })
+      .subscribe((countries) => {
+        this.countryArray = countries;
+        this.countryFound = true;
+      }, () => {
+        this.countryFound = false;
+      })
   }
 
 
-  constructor(private paisService : PaisesService) { }
+  sugerencias(event : string ) {
+      if(event.length>0){
+        this.endpointCurrency(event);
+      }else{
+        this.countryArray = [];
+      }
+    }
+
+  constructor(private paisService: PaisesService) { }
 
 }

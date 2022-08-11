@@ -1,6 +1,9 @@
 <h4 class="fs-6 lead text-uppercase pt-1">Por capital</h4>
 
-<app-search-component (onEmitValue)="endpointCapital($event)"></app-search-component>
+<app-search-component 
+(onEmitValue)="endpointCapital($event)"
+(onEmitDebounce)="sugerencias($event)"
+></app-search-component>
 <div *ngIf="countryFound, else capitalNotWasFound">
     <app-table-component [arrayCountries]="countryArray"></app-table-component>
 </div>

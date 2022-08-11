@@ -22,6 +22,14 @@ export class PageCapitalComponent {
     })
   }
 
+  sugerencias(event : string){
+    if(event.length>0){
+      this.endpointCapital(event);
+    }else{
+      this.countryArray = [];
+    }
+   
+  }
 
 
   constructor(private paisService : PaisesService) { }

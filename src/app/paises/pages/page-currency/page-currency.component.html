@@ -1,5 +1,8 @@
 <h4 class="fs-6 lead text-uppercase pt-1">Por moneda</h4>
-<app-search-component (onEmitValue)="endpointCurrency($event)"></app-search-component>
+<app-search-component 
+(onEmitValue)="endpointCurrency($event)"
+(onEmitDebounce)="sugerencias($event)"
+></app-search-component>
 
 <div *ngIf="countryFound, else currencyNotWasFound">
     <app-table-component [arrayCountries]="countryArray"></app-table-component>

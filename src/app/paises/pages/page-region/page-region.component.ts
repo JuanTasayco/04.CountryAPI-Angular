@@ -4,11 +4,11 @@ import { PaisesService } from '../../services/paises.service';
 @Component({
   selector: 'app-page-region',
   templateUrl: './page-region.component.html',
- 
-})
-export class PageRegionComponent  {
 
-  countryArray : any   = [];  
+})
+export class PageRegionComponent {
+
+  countryArray: any = [];
   countryFound = true;
 
   endpointRegion(value: string) {
@@ -16,14 +16,23 @@ export class PageRegionComponent  {
       .subscribe(countries => {
         this.countryFound = true;
         this.countryArray = countries;
- 
-      }, ()=>{
+
+      }, () => {
         this.countryFound = false;
       })
   }
 
 
-  constructor(private paisService : PaisesService) { }
+  sugerencias(event: string) {
+    if (event.length > 0) {
+      this.endpointRegion(event)
+    } else {
+      this.countryArray = [];
+    }
+
+  }
+
+  constructor(private paisService: PaisesService) { }
 
 
 

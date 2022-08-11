@@ -5,7 +5,12 @@ import { CountryResponse } from '../../interfaces/paises.interface';
 @Component({
   selector: 'app-table-component',
   templateUrl: './table-component.component.html',
-  styles: []
+  styles: [`
+  tr{
+    font-family: var( --font-family )
+  }
+   
+  `]
 })
 export class TableComponentComponent  {
 

@@ -21,6 +21,14 @@ export class PagePaisComponent {
       })
   }
 
+  sugerencias(event: string){
+    if(event.length>0){
+      this.endpointCountry(event)
+    }else{
+      this.countryArray = [];
+    }
+  }
+
 
   constructor(private paisService: PaisesService) { }
 

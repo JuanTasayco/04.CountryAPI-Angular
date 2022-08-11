@@ -1,8 +1,15 @@
 <h4 class="fs-6 lead text-uppercase pt-1">Por país</h4>
-<app-search-component (onEmitValue)="endpointCountry($event)"></app-search-component>
+<app-search-component 
+(onEmitValue)="endpointCountry($event)"
+(onEmitDebounce)="sugerencias($event)"
+>
+
+</app-search-component>
 
 <div *ngIf="countryFound, else countryNotWasFound">
+
 <app-table-component [arrayCountries]="countryArray"></app-table-component>
+
 </div>
 
 <ng-template #countryNotWasFound>

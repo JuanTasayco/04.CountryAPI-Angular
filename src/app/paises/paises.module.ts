@@ -10,8 +10,14 @@ import { PageLenguageComponent } from './pages/page-lenguage/page-lenguage.compo
 import { PageCodeIdComponent } from './pages/page-code-id/page-code-id.component';
 import { TableComponentComponent } from './components/table-component/table-component.component';
 import { SearchComponentComponent } from './components/search-component/search-component.component';
-import { PaisesService } from './services/paises.service';
 
+
+import { PaisesService } from './services/paises.service';
+import { NgPrimeModule } from '../ng-prime/ng-prime.module';
+
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ObjectsPipe } from './pipes/lenguages.pipe';
 
 
 @NgModule({
@@ -22,9 +28,10 @@ import { PaisesService } from './services/paises.service';
     PageCurrencyComponent,
     PageLenguageComponent,
     PageCodeIdComponent,
-
     TableComponentComponent,
-    SearchComponentComponent
+    SearchComponentComponent,
+    ObjectsPipe,
+    
   ],
   exports: [
     PagePaisComponent,
@@ -41,6 +48,8 @@ import { PaisesService } from './services/paises.service';
   imports: [
     CommonModule,
     RouterModule,
+    NgPrimeModule,
+    BrowserAnimationsModule
   ]
 })
 export class PaisesModule { }
